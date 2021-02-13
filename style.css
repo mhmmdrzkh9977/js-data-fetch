@@ -1,0 +1,130 @@
+/* ویژگی ای وجود دارد به نام که به ما این اجازه را می دهد که در نحوه اعمال اندازه ها بر روی عناصر کنترل داشته باشیم.  box-sizing */
+* {
+  box-sizing: border-box;
+}
+/* درای قسمت بک گراند قراردادیم و عکس در هر حالتی وسط در وسط هست */
+body {
+  width: 100vh;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url(./background.png);
+  /* عکس وسط در وسط */
+  background-position: center center;
+  /* عکس تکرار نشود */
+  background-repeat: no-repeat;
+}
+/* یک باکس وسط در وسط */
+.content {
+  font-family: sans-serif;
+  /* وسط در وسط شد از خط ۲۰ تا ۲۳ */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 1000px;
+  max-height: 600px;
+  width: 95%;
+  height: 95%;
+  border-radius: 10px;
+  border: 1px solid rgb(255, 255, 255);
+  color: white;
+}
+/* شفاف کردن بک گراند باکس برای اینکه عکس بگ گراند دیده بشه */
+.content::after {
+  position: absolute;
+  backdrop-filter: blur(10px);
+  content: " ";
+  width: 100%;
+  height: 100%;
+  top: 0;
+  border-radius: 10px;
+  z-index: -2;
+}
+/* اضافه کردن یک متن در بالای باکس  تا تیتری باشد برای باکس */
+.content::before {
+  position: absolute;
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+  content: "Content";
+  width: 100px;
+  height: 50px;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  line-height: 50px;
+  border: 1px solid #ffffff;
+  font-family: sans-serif;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  border-radius: 25px;
+}
+/* برای اینکه تمام div
+در یک راستا قرار بگیرد */
+.box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 30px 12px;
+  display: flex;
+}
+/* عرض ۳۰ درضد به قسمت لیست اسم های استارشیپ */
+.box .startship-section {
+  width: 30%;
+}
+/* تیتر تمام قسمت ها  */
+h2 {
+  position: relative;
+  color: rgb(255, 255, 255);
+}
+/* قرار دادن یک خط در زیر تیتر برای زیبایی  */
+.box .startship-section h2::after {
+  bottom: -4px;
+  width: 70px;
+  height: 3px;
+  background-color: white;
+  left: 0;
+  content: " ";
+  position: absolute;
+}
+/* لیست ها بدون نقطه باشد */
+.starship-list {
+  list-style-type: none;
+}
+/* تمام دکمه های بک گراندشون شفاف شده و  گرد شده */
+.starship-list li button {
+  width: 180px;
+  height: 40px;
+  margin: 3px 0;
+  /* قرار دادن انیمیشن ۰.۲ ثانیه */
+  transition: 0.2s;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.459);
+  outline: none;
+}
+/* با هاور کردم عریض میشود  */
+.starship-list li button:hover {
+  width: 200px;
+  /* با هاور سایه میگیرد */
+  box-shadow: 0 0 4px 1.5px #ffffff;
+}
+/* با کلیک کردن کردن عرض ثابت میشود */
+.starship-list li button:focus {
+  border: 1px solid #ffffff;
+  width: 200px;
+  box-shadow: 0 0 7px 1.5px #ffffff;
+}
+/* قسمت جزئیات عرض ۴۰ درصد میگیرد */
+.box .detail-section {
+  width: 40%;
+}
+/* قسمت فیلم ها عرض ۳۰ درصد میگیرد */
+.video-section {
+  width: 30%;
+}
+strong {
+  color: red;
+}
